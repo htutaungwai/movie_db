@@ -1,6 +1,6 @@
 import React from "react";
 import Nav from "./layout/Nav";
-import SearchInput from "./layout/SearchInput";
+import SearchInput from "./search/SearchInput";
 
 const Header = () => {
   return (

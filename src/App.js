@@ -1,11 +1,12 @@
-import react, { useState, useEffect } from "react";
+import react, { useState, useEffect, useContext } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { MovieContextProvider } from "./context/movieContext";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import MovieCards from "./components/MovieCards";
-import Trending from "./components/Trending";
 
-const API_KEY = process.env.REACT_APP_API_KEY;
+import Trending from "./components/Trending";
+import Search from "./components/Search";
+import Home from "./pages/Home";
 
 function App() {
   const [trendings, setTrendings] = useState([]);
@@ -20,13 +21,18 @@ function App() {
     // setTrending(data);
   };
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <Trending />
-        <Footer />
-      </div>
-    </Router>
+    <MovieContextProvider>
+      <Router>
+        <div className="App">
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/search" element={<Search />} />
+          </Routes>
+          <Footer />
+        </div>
+      </Router>
+    </MovieContextProvider>
   );
 }
 
