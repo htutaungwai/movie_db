@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import Slide from "./layout/Slide";
 
 const Slider = () => {
@@ -27,17 +28,20 @@ const Slider = () => {
   };
 
   const checkBoundaries = () => {
-    console.log(X);
     if (
       parseInt(
         document.querySelector(".inner-slider").getClientRects()[0].left
-      ) > 10 &&
+      ) > 20 &&
       X > 0
     ) {
       setTimeout(() => {
         setX(0);
       }, 1000);
     }
+  };
+
+  const backToFirstSlide = () => {
+    setX(0);
   };
   const imgURL =
     "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSupq8WkAnqFOB-NkcGnKDJM3D9AOH_3vK4exSxwue8oulYGIKS";
@@ -60,6 +64,13 @@ const Slider = () => {
           <Slide imgURL={imgURL} cursor={cursor} />
           <Slide imgURL={imgURL} cursor={cursor} />
           <Slide imgURL={imgURL} cursor={cursor} />
+          <Slide imgURL={imgURL} cursor={cursor} />
+          <Slide imgURL={imgURL} cursor={cursor} />
+          <Slide imgURL={imgURL} cursor={cursor} />
+          <Slide imgURL={imgURL} cursor={cursor} />
+          <button onClick={backToFirstSlide} className="ml-5">
+            <BsFillArrowLeftCircleFill size={50} />
+          </button>
         </div>
       </div>
     </div>
