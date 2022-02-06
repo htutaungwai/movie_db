@@ -6,36 +6,30 @@ export const MovieContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [title, setTitle] = useState("");
   const [movies, setMovies] = useState([]);
-  const [moviePoster, setMoviePoster] = useState("");
+
+ 
 
   useEffect(() => {
-    fetchSearchMovies();
+    fetchSearchMovieIds();
   }, [title]);
 
-  const fetchSearchMovies = async () => {
+
+  const fetchSearchMovieIds = async () => {
     if (title === "") {
       return;
     }
-    const response = await fetch(`
-    https://api.themoviedb.org/3/search/keyword?api_key=${API_KEY}&query=${title}&page=1`);
+    const query = title.replace(" ", "%20")
+    
+    const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`);
+    
     const data = await response.json();
-    if (data) {
-      setMovies([...movies, data]);
-      setLoading(false);
-    }
+    
+    setMovies([...movies, data]);
+    setLoading(false);
+   
   };
 
-  const fetchMoviePoster = async (movie_id) => {
-    if (title !== "") {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${movie_id}/images?api_key=${API_KEY}&language=en-US`
-      );
-      const data = await response.json();
-      if (data) {
-        console.log(data);
-      }
-    }
-  };
+ 
   return (
     <MovieContext.Provider
       value={{
@@ -45,7 +39,6 @@ export const MovieContextProvider = ({ children }) => {
         loading,
         setLoading,
         setMovies,
-        fetchMoviePoster,
       }}
     >
       {children}

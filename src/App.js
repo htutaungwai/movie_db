@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import Trending from "./components/Trending";
-import Search from "./components/Search";
+import Search from "./pages/Search";
 import Home from "./pages/Home";
 
 function App() {

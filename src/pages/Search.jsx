@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import SearchMovies from "./search/SearchMovies";
+import SearchMovies from "../components/search/SearchMovies"
 import MovieContext from "../context/movieContext";
 
 const Search = () => {
@@ -8,7 +8,7 @@ const Search = () => {
 
   return (
     <div className="search">
-      <h2>Showing results for {title} </h2>
+      <h2 className="text-center m-3">Showing results for " <span className="text-2xl text-slate-50">{title.toUpperCase()}</span> "</h2>
       <SearchMovies />
     </div>
   );

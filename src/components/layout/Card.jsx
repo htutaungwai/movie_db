@@ -1,11 +1,12 @@
 import React from "react";
 
-const Card = ({ name }) => {
+const Card = ({ name, poster, vote }) => {
   return (
-    <div className=" rounded overflow-hidden shadow-lg max-w-full bg-slate-800">
+    <div className=" rounded overflow-hidden shadow-lg w-58 bg-slate-800 relative">
+      <div className="absolute bg-slate-800 p-4 rounded-bl-xl font-bold right-0">{vote == 0 ? "NA" : vote}</div>
       <img
-        className="cursor-pointer w-full max-h-48 object-cover object-center"
-        src="https://images.pexels.com/photos/9921256/pexels-photo-9921256.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+        className="cursor-pointer w-full h-72 object-cover"
+        src= {`https://image.tmdb.org/t/p/original/${poster}`}
         alt="Mountain"
       />
       <div className="px-6 py-4 cursor-pointer">

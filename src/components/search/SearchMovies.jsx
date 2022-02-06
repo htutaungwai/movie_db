@@ -5,36 +5,39 @@ import Trending from "../Trending";
 
 const SearchMovies = () => {
   const { title, movies, loading } = useContext(MovieContext);
-  console.log(movies.length);
-  if (!loading && movies.length > 0 && !(title === "")) {
+  
+
+  if (!loading && movies.length > 0 && title !== "") {
     const { results } = movies[0];
-    return (
-      <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+    console.log(results)
+ 
+    return (<div>
+      <div>
+        <button>1</button>
+      </div>
+      <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 relative">
         {results.map((movie) => {
-          return <Card name={movie.name} id={movie.id} key={movie.id} />;
+          return <Card name={movie.title} id={movie.id} key={movie.id} poster={movie.poster_path} vote={movie.vote_average} />;
         })}
+
+        {results.length ===0 && <div className="w-full h-screen flex justify-center  ">
+        <h2 className="text-2xl font-bold">We don't find anything. :(</h2>
+      </div>
+    }
+      </div>
       </div>
     );
   } else if (title === "") {
-    return <h1>No results</h1>;
+    return <div className="w-full h-screen flex justify-center items-center">
+      <h2 className="font-bold text-7xl">No results</h2>
+    </div>;
   } else {
-    return <h1>Loading...</h1>;
+    return <div className="w-full h-screen flex justify-center items-center "> 
+      <div className="lds-ripple"><div></div><div></div></div>
+    </div>;
   }
 
-  // if (loading === false) {
-  //
-  // } else {
-  //   return <h1>Hll</h1>;
-  // }
-  return <h1>Hll</h1>;
+ 
 };
-//   if (loading && results.length > 0) {
-//
-//   } else if (loading && results.length > 0) {
-//     return <h2>Loading...</h2>;
-//   } else {
-//     return <h2>No results</h2>;
-//   }
-// };
 
 export default SearchMovies;
