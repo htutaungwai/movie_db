@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
-import SearchButtons from "../components/search/SearchButtons";
-import MovieContext from "../context/movieContext";
+import Trending from "../components/Trending"
 
 const Home = () => {
   
-  return <div> dd</div>;
+  return <div>
+    <Trending />
+  </div>;
 };
 
 export default Home;
