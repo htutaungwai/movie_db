@@ -8,7 +8,7 @@ const Search = () => {
 
   return (
     <div className="search">
-      <h2 className="text-center m-3">Showing results for " <span className="text-2xl text-slate-50">{title.toUpperCase()}</span> "</h2>
+      {title && <h2 className="text-center m-3">Showing results for " <span className="text-2xl text-slate-50">{title.toUpperCase()}</span> "</h2>}
       <SearchMovies />
     </div>
   );

@@ -1,9 +1,24 @@
 import React from "react";
 
 const Card = ({ name, poster, vote }) => {
+
+  const checkvote = (rating) =>{
+    if(rating >= 7){
+      return "bg-lime-600"
+    }else if(rating >= 4){
+      return "bg-orange-500"
+    }else if(rating === 0){
+      return "bg-slate-800"
+    }
+    else{
+      return "bg-fuchsia-500"
+    }
+  }
+  const color = checkvote(vote);
+ 
   return (
     <div className=" rounded overflow-hidden shadow-lg w-58 bg-slate-800 relative">
-      <div className="absolute bg-slate-800 p-4 rounded-bl-xl font-bold right-0">{vote == 0 ? "NA" : vote}</div>
+      <div  className={`absolute p-4 rounded-bl-xl font-bold right-0 ${color}`}>{vote == 0 ? "NA" : vote}</div>
       <img
         className="cursor-pointer w-full h-72 object-cover"
         src= {`https://image.tmdb.org/t/p/original/${poster}`}

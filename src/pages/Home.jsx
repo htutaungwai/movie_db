@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
+import SearchButtons from "../components/search/SearchButtons";
 import MovieContext from "../context/movieContext";
 
 const Home = () => {
-  const { users } = useContext(MovieContext);
-  return <div>dd {users}</div>;
+  
+  return <div> dd</div>;
 };
 
 export default Home;

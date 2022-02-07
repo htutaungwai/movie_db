@@ -2,20 +2,23 @@ import MovieContext from "../../context/movieContext";
 import React, { useContext } from "react";
 import Card from "../layout/Card";
 import Trending from "../Trending";
+import SearchButtons from "./SearchButtons";
 
 const SearchMovies = () => {
-  const { title, movies, loading } = useContext(MovieContext);
+  const { title, movies, loading, totalPages, currentPage } = useContext(MovieContext);
+  
   
 
   if (!loading && movies.length > 0 && title !== "") {
-    const { results } = movies[0];
-    console.log(results)
+    const { results} = movies[0];
+   
  
+    
+
     return (<div>
-      <div>
-        <button>1</button>
-      </div>
-      <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 relative">
+       <SearchButtons />
+      <div className="flex justify-end items-center pr-8 font-bold">page {currentPage} of {totalPages}</div>
+      <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-5 relative">
         {results.map((movie) => {
           return <Card name={movie.title} id={movie.id} key={movie.id} poster={movie.poster_path} vote={movie.vote_average} />;
         })}
@@ -25,6 +28,7 @@ const SearchMovies = () => {
       </div>
     }
       </div>
+      {/* <SearchButtons /> */}
       </div>
     );
   } else if (title === "") {
