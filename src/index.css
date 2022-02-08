@@ -51,3 +51,7 @@ code {
   }
 }
 
+.hover_red:hover {
+  color: crimson;
+  transition: 0.3s ease;
+}

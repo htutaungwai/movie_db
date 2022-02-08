@@ -12,7 +12,6 @@ export const MovieContextProvider = ({ children }) => {
 
 
   useEffect(() => {
-
     setButtons([]);
     setCurrentPage(1);
     fetchSearchMovieIds();
@@ -64,7 +63,7 @@ export const MovieContextProvider = ({ children }) => {
     for(let x = leftBoundary ; x <= rightBoundary; x++){
       newButtonArray.push(x);
     }
-    console.log(newButtonArray)
+   
      setButtons(newButtonArray);
    }
 

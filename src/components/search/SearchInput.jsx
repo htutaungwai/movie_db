@@ -17,7 +17,7 @@ const SearchInput = () => {
     } else {
       setMovies([]);
       setTitle(searchText.toLocaleLowerCase());
-
+      setSearchText("");
       navigate("/search");
     }
   };

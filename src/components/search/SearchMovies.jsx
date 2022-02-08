@@ -28,7 +28,7 @@ const SearchMovies = () => {
       </div>
     }
       </div>
-      {/* <SearchButtons /> */}
+      <SearchButtons />
       </div>
     );
   } else if (title === "") {
